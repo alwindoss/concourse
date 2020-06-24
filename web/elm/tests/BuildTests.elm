@@ -1,5 +1,6 @@
 module BuildTests exposing (all)
 
+import Api.EventSource exposing (Event(..), EventEnvelope)
 import Application.Application as Application
 import Array
 import Assets
@@ -168,20 +169,22 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.Log
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                "log message"
-                                                Nothing
+                                            Event <|
+                                                STModels.Log
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    "log message"
+                                                    Nothing
                                       }
                                     ]
                         )
@@ -224,20 +227,22 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.Log
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                "log message"
-                                                Nothing
+                                            Event <|
+                                                STModels.Log
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    "log message"
+                                                    Nothing
                                       }
                                     ]
                         )
@@ -275,20 +280,22 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.Log
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                "log message"
-                                                Nothing
+                                            Event <|
+                                                STModels.Log
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    "log message"
+                                                    Nothing
                                       }
                                     ]
                         )
@@ -326,29 +333,32 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.Log
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                "log message\n"
-                                                Nothing
+                                            Event <|
+                                                STModels.Log
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    "log message\n"
+                                                    Nothing
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.Log
-                                                { source = "stdout"
-                                                , id = "stepid"
-                                                }
-                                                "log message"
-                                                Nothing
+                                            Event <|
+                                                STModels.Log
+                                                    { source = "stdout"
+                                                    , id = "stepid"
+                                                    }
+                                                    "log message"
+                                                    Nothing
                                       }
                                     ]
                         )
@@ -385,20 +395,22 @@ all =
                             Ok <|
                                 [ { url = eventsUrl
                                   , data =
-                                        STModels.StartTask
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            (Time.millisToPosix 0)
+                                        Event <|
+                                            STModels.StartTask
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                (Time.millisToPosix 0)
                                   }
                                 , { url = eventsUrl
                                   , data =
-                                        STModels.Log
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            "log message"
-                                            Nothing
+                                        Event <|
+                                            STModels.Log
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                "log message"
+                                                Nothing
                                   }
                                 ]
                         )
@@ -438,20 +450,22 @@ all =
                             Ok <|
                                 [ { url = eventsUrl
                                   , data =
-                                        STModels.StartTask
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            (Time.millisToPosix 0)
+                                        Event <|
+                                            STModels.StartTask
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                (Time.millisToPosix 0)
                                   }
                                 , { url = eventsUrl
                                   , data =
-                                        STModels.Log
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            "log message"
-                                            Nothing
+                                        Event <|
+                                            STModels.Log
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                "log message"
+                                                Nothing
                                   }
                                 ]
                         )
@@ -500,20 +514,22 @@ all =
                             Ok <|
                                 [ { url = eventsUrl
                                   , data =
-                                        STModels.StartTask
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            (Time.millisToPosix 0)
+                                        Event <|
+                                            STModels.StartTask
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                (Time.millisToPosix 0)
                                   }
                                 , { url = eventsUrl
                                   , data =
-                                        STModels.Log
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            "log message"
-                                            Nothing
+                                        Event <|
+                                            STModels.Log
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                "log message"
+                                                Nothing
                                   }
                                 ]
                         )
@@ -565,20 +581,22 @@ all =
                             Ok <|
                                 [ { url = eventsUrl
                                   , data =
-                                        STModels.StartTask
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            (Time.millisToPosix 0)
+                                        Event <|
+                                            STModels.StartTask
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                (Time.millisToPosix 0)
                                   }
                                 , { url = eventsUrl
                                   , data =
-                                        STModels.Log
-                                            { source = "stdout"
-                                            , id = "stepid"
-                                            }
-                                            "log message"
-                                            Nothing
+                                        Event <|
+                                            STModels.Log
+                                                { source = "stdout"
+                                                , id = "stepid"
+                                                }
+                                                "log message"
+                                                Nothing
                                   }
                                 ]
                         )
@@ -801,29 +819,33 @@ all =
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
-                        , data = STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
+                        , data =
+                            Event <|
+                                STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
                         }
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
                         , data =
-                            STModels.Log
-                                { id = "stepid"
-                                , source = "stdout"
-                                }
-                                "log message"
-                                Nothing
+                            Event <|
+                                STModels.Log
+                                    { id = "stepid"
+                                    , source = "stdout"
+                                    }
+                                    "log message"
+                                    Nothing
                         }
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/2/events"
                         , data =
-                            STModels.Log
-                                { id = "stepid"
-                                , source = "stdout"
-                                }
-                                "bad message"
-                                Nothing
+                            Event <|
+                                STModels.Log
+                                    { id = "stepid"
+                                    , source = "stdout"
+                                    }
+                                    "bad message"
+                                    Nothing
                         }
                     |> Tuple.first
                     |> Common.queryView
@@ -981,22 +1003,24 @@ all =
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
                         , data =
-                            STModels.StartTask
-                                { id = "stepid"
-                                , source = ""
-                                }
-                                (Time.millisToPosix 0)
+                            Event <|
+                                STModels.StartTask
+                                    { id = "stepid"
+                                    , source = ""
+                                    }
+                                    (Time.millisToPosix 0)
                         }
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
                         , data =
-                            STModels.Log
-                                { id = "stepid"
-                                , source = "stdout"
-                                }
-                                "log message\n"
-                                (Just <| Time.millisToPosix 0)
+                            Event <|
+                                STModels.Log
+                                    { id = "stepid"
+                                    , source = "stdout"
+                                    }
+                                    "log message\n"
+                                    (Just <| Time.millisToPosix 0)
                         }
                     |> Tuple.first
                     |> Application.handleCallback
@@ -1022,7 +1046,9 @@ all =
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
-                        , data = STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
+                        , data =
+                            Event <|
+                                STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
                         }
                     |> Tuple.second
                     |> Common.contains (Effects.Scroll ScrollDirection.ToBottom "build-body")
@@ -1034,7 +1060,9 @@ all =
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
-                        , data = STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
+                        , data =
+                            Event <|
+                                STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
                         }
                     |> Tuple.second
                     |> Expect.equal []
@@ -1083,7 +1111,7 @@ all =
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
-                        , data = STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
+                        , data = Event <| STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
                         }
                     |> Tuple.second
                     |> Expect.equal []
@@ -1113,7 +1141,7 @@ all =
                     |> Tuple.first
                     |> receiveEvent
                         { url = "http://localhost:8080/api/v1/builds/1/events"
-                        , data = STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
+                        , data = Event <| STModels.StartTask { id = "stepid", source = "" } (Time.millisToPosix 0)
                         }
                     |> Tuple.second
                     |> Expect.equal [ Effects.Scroll ScrollDirection.ToBottom "build-body" ]
@@ -1520,7 +1548,7 @@ all =
                         |> Tuple.first
                         |> receiveEvent
                             { url = "http://localhost:8080/api/v1/builds/1/events"
-                            , data = STModels.BuildStatus BuildStatusSucceeded (Time.millisToPosix 0)
+                            , data = Event <| STModels.BuildStatus BuildStatusSucceeded (Time.millisToPosix 0)
                             }
                         |> Tuple.first
                         |> Application.update
@@ -1541,7 +1569,7 @@ all =
                         |> Tuple.first
                         |> receiveEvent
                             { url = "http://localhost:8080/api/v1/builds/1/events"
-                            , data = STModels.BuildStatus BuildStatusSucceeded (Time.millisToPosix 0)
+                            , data = Event <| STModels.BuildStatus BuildStatusSucceeded (Time.millisToPosix 0)
                             }
                         |> Tuple.first
                         |> Application.update
@@ -1819,8 +1847,9 @@ all =
                             (Subscription.BuildEventsReceived <|
                                 Ok
                                     [ { data =
-                                            STModels.BuildStatus BuildStatusSucceeded <|
-                                                Time.millisToPosix 0
+                                            Event <|
+                                                STModels.BuildStatus BuildStatusSucceeded <|
+                                                    Time.millisToPosix 0
                                       , url = "http://localhost:8080/api/v1/builds/1/events"
                                       }
                                     ]
@@ -2830,11 +2859,12 @@ all =
                                     [ { url =
                                             eventsUrl
                                       , data =
-                                            STModels.InitializeGet
-                                                { source = ""
-                                                , id = "plan"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.InitializeGet
+                                                    { source = ""
+                                                    , id = "plan"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -2849,11 +2879,12 @@ all =
                                     [ { url =
                                             eventsUrl
                                       , data =
-                                            STModels.InitializeGet
-                                                { source = ""
-                                                , id = "plan"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.InitializeGet
+                                                    { source = ""
+                                                    , id = "plan"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -2874,11 +2905,12 @@ all =
                                     [ { url =
                                             eventsUrl
                                       , data =
-                                            STModels.InitializeGet
-                                                { source = ""
-                                                , id = "plan"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.InitializeGet
+                                                    { source = ""
+                                                    , id = "plan"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -3115,9 +3147,10 @@ all =
                                     [ { url =
                                             eventsUrl
                                       , data =
-                                            STModels.BuildStatus
-                                                BuildStatusFailed
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.BuildStatus
+                                                    BuildStatusFailed
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -3142,14 +3175,15 @@ all =
                                     [ { url =
                                             eventsUrl
                                       , data =
-                                            STModels.FinishGet
-                                                { source = "stdout"
-                                                , id = "plan"
-                                                }
-                                                0
-                                                Dict.empty
-                                                []
-                                                Nothing
+                                            Event <|
+                                                STModels.FinishGet
+                                                    { source = "stdout"
+                                                    , id = "plan"
+                                                    }
+                                                    0
+                                                    Dict.empty
+                                                    []
+                                                    Nothing
                                       }
                                     ]
                             )
@@ -3172,12 +3206,13 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.FinishGet
-                                                { source = "stdout", id = "plan" }
-                                                0
-                                                (Dict.fromList [ ( "version", "v3.1.4" ) ])
-                                                []
-                                                Nothing
+                                            Event <|
+                                                STModels.FinishGet
+                                                    { source = "stdout", id = "plan" }
+                                                    0
+                                                    (Dict.fromList [ ( "version", "v3.1.4" ) ])
+                                                    []
+                                                    Nothing
                                       }
                                     ]
                             )
@@ -3194,22 +3229,25 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.InitializeTask
-                                                { source = "stdout", id = "plan" }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.InitializeTask
+                                                    { source = "stdout", id = "plan" }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout", id = "plan" }
-                                                (Time.millisToPosix 10000)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout", id = "plan" }
+                                                    (Time.millisToPosix 10000)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.FinishTask
-                                                { source = "stdout", id = "plan" }
-                                                0
-                                                (Time.millisToPosix 30000)
+                                            Event <|
+                                                STModels.FinishTask
+                                                    { source = "stdout", id = "plan" }
+                                                    0
+                                                    (Time.millisToPosix 30000)
                                       }
                                     ]
                             )
@@ -3236,22 +3274,25 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.InitializeTask
-                                                { source = "stdout", id = "plan" }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.InitializeTask
+                                                    { source = "stdout", id = "plan" }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout", id = "plan" }
-                                                (Time.millisToPosix 10000)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout", id = "plan" }
+                                                    (Time.millisToPosix 10000)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.FinishTask
-                                                { source = "stdout", id = "plan" }
-                                                0
-                                                (Time.millisToPosix 30000)
+                                            Event <|
+                                                STModels.FinishTask
+                                                    { source = "stdout", id = "plan" }
+                                                    0
+                                                    (Time.millisToPosix 30000)
                                       }
                                     ]
                             )
@@ -3321,22 +3362,25 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.InitializeTask
-                                                { source = "stdout", id = "plan" }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.InitializeTask
+                                                    { source = "stdout", id = "plan" }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout", id = "plan" }
-                                                (Time.millisToPosix 10000)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout", id = "plan" }
+                                                    (Time.millisToPosix 10000)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.FinishTask
-                                                { source = "stdout", id = "plan" }
-                                                0
-                                                (Time.millisToPosix 30000)
+                                            Event <|
+                                                STModels.FinishTask
+                                                    { source = "stdout", id = "plan" }
+                                                    0
+                                                    (Time.millisToPosix 30000)
                                       }
                                     ]
                             )
@@ -3406,11 +3450,12 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout"
-                                                , id = "plan"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout"
+                                                    , id = "plan"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -3443,17 +3488,19 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.InitializeTask
-                                                { source = "stdout"
-                                                , id = "plan"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.InitializeTask
+                                                    { source = "stdout"
+                                                    , id = "plan"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     , { url = eventsUrl
                                       , data =
-                                            STModels.BuildStatus
-                                                BuildStatusAborted
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.BuildStatus
+                                                    BuildStatusAborted
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -3476,9 +3523,10 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.BuildStatus
-                                                BuildStatusAborted
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.BuildStatus
+                                                    BuildStatusAborted
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -3501,12 +3549,13 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.FinishGet
-                                                { source = "stdout", id = "plan" }
-                                                1
-                                                Dict.empty
-                                                []
-                                                Nothing
+                                            Event <|
+                                                STModels.FinishGet
+                                                    { source = "stdout", id = "plan" }
+                                                    1
+                                                    Dict.empty
+                                                    []
+                                                    Nothing
                                       }
                                     ]
                             )
@@ -3529,10 +3578,11 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.Error
-                                                { source = "stderr", id = "plan" }
-                                                "error message"
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.Error
+                                                    { source = "stderr", id = "plan" }
+                                                    "error message"
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -3556,14 +3606,15 @@ all =
                                     [ { url =
                                             eventsUrl
                                       , data =
-                                            STModels.FinishGet
-                                                { source = "stdout"
-                                                , id = "plan"
-                                                }
-                                                0
-                                                Dict.empty
-                                                []
-                                                Nothing
+                                            Event <|
+                                                STModels.FinishGet
+                                                    { source = "stdout"
+                                                    , id = "plan"
+                                                    }
+                                                    0
+                                                    Dict.empty
+                                                    []
+                                                    Nothing
                                       }
                                     ]
                             )
@@ -3579,12 +3630,13 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.FinishGet
-                                                { source = "stdout", id = "plan" }
-                                                1
-                                                Dict.empty
-                                                []
-                                                Nothing
+                                            Event <|
+                                                STModels.FinishGet
+                                                    { source = "stdout", id = "plan" }
+                                                    1
+                                                    Dict.empty
+                                                    []
+                                                    Nothing
                                       }
                                     ]
                             )
@@ -3600,11 +3652,12 @@ all =
                                 Ok <|
                                     [ { url = eventsUrl
                                       , data =
-                                            STModels.StartTask
-                                                { source = "stdout"
-                                                , id = "plan"
-                                                }
-                                                (Time.millisToPosix 0)
+                                            Event <|
+                                                STModels.StartTask
+                                                    { source = "stdout"
+                                                    , id = "plan"
+                                                    }
+                                                    (Time.millisToPosix 0)
                                       }
                                     ]
                             )
@@ -3622,7 +3675,7 @@ all =
                         >> Application.handleDelivery
                             (BuildEventsReceived <|
                                 Ok
-                                    [ { data = STModels.NetworkError
+                                    [ { data = NetworkError
                                       , url = eventsUrl
                                       }
                                     ]
@@ -3639,7 +3692,7 @@ all =
                             (BuildEventsReceived <|
                                 Ok
                                     [ { url = eventsUrl
-                                      , data = STModels.Opened
+                                      , data = Opened
                                       }
                                     ]
                             )
@@ -3647,7 +3700,7 @@ all =
                         >> Application.handleDelivery
                             (BuildEventsReceived <|
                                 Ok
-                                    [ { data = STModels.NetworkError
+                                    [ { data = NetworkError
                                       , url = eventsUrl
                                       }
                                     ]
@@ -3716,23 +3769,24 @@ all =
                                         Ok <|
                                             [ { url = eventsUrl
                                               , data =
-                                                    STModels.FinishGet
-                                                        { source = "stdout"
-                                                        , id = "stepid"
-                                                        }
-                                                        1
-                                                        (Dict.fromList [ ( "version", "1" ) ])
-                                                        [ { name = "http-url"
-                                                          , value = httpURLText
-                                                          }
-                                                        , { name = "https-url"
-                                                          , value = httpsURLText
-                                                          }
-                                                        , { name = "plain-text"
-                                                          , value = plainText
-                                                          }
-                                                        ]
-                                                        Nothing
+                                                    Event <|
+                                                        STModels.FinishGet
+                                                            { source = "stdout"
+                                                            , id = "stepid"
+                                                            }
+                                                            1
+                                                            (Dict.fromList [ ( "version", "1" ) ])
+                                                            [ { name = "http-url"
+                                                              , value = httpURLText
+                                                              }
+                                                            , { name = "https-url"
+                                                              , value = httpsURLText
+                                                              }
+                                                            , { name = "plain-text"
+                                                              , value = plainText
+                                                              }
+                                                            ]
+                                                            Nothing
                                               }
                                             ]
                                 )
@@ -3882,7 +3936,7 @@ darkGrey =
 
 
 receiveEvent :
-    STModels.BuildEventEnvelope
+    EventEnvelope STModels.BuildEvent
     -> Application.Model
     -> ( Application.Model, List Effects.Effect )
 receiveEvent envelope =
