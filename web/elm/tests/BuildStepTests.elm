@@ -391,7 +391,7 @@ theGetStepReturnsMetadata =
     Tuple.first
         >> Application.update
             (DeliveryReceived <|
-                EventsReceived <|
+                BuildEventsReceived <|
                     Ok <|
                         [ { url = "http://localhost:8080/api/v1/builds/1/events"
                           , data =
@@ -573,7 +573,7 @@ theSecondAttemptInitialized =
 taskInitialized stepId =
     Tuple.first
         >> Application.handleDelivery
-            (EventsReceived <|
+            (BuildEventsReceived <|
                 Ok
                     [ { data =
                             InitializeTask
@@ -590,7 +590,7 @@ taskInitialized stepId =
 thereIsALog =
     Tuple.first
         >> Application.handleDelivery
-            (EventsReceived <|
+            (BuildEventsReceived <|
                 Ok
                     [ { data =
                             InitializeTask
@@ -624,7 +624,7 @@ thereIsALog =
 theBuildFinished =
     Tuple.first
         >> Application.handleDelivery
-            (EventsReceived <|
+            (BuildEventsReceived <|
                 Ok
                     [ { data =
                             BuildStatus

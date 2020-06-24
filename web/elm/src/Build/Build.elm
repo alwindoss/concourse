@@ -152,7 +152,7 @@ subscriptions model =
                     []
 
                 Just url ->
-                    [ Subscription.FromEventSource ( url, [ "end", "event" ] ) ]
+                    [ Subscription.FromEventSource ]
            )
 
 
@@ -262,15 +262,7 @@ handleCallback action ( model, effects ) =
                     planAndResources
                 )
                 ( model
-                , effects
-                    ++ [ Effects.OpenBuildEventStream
-                            { url =
-                                Endpoints.BuildEventStream
-                                    |> Endpoints.Build buildId
-                                    |> Endpoints.toString []
-                            , eventTypes = [ "end", "event" ]
-                            }
-                       ]
+                , effects ++ [ Effects.OpenBuildEventStream buildId ]
                 )
 
         PlanAndResourcesFetched _ (Err err) ->
@@ -332,7 +324,7 @@ handleDelivery session delivery ( model, effects ) =
         ClockTicked FiveSeconds _ ->
             ( model, effects ++ [ Effects.FetchAllPipelines ] )
 
-        EventsReceived (Ok envelopes) ->
+        BuildEventsReceived (Ok envelopes) ->
             let
                 eventSourceClosed =
                     model.output
