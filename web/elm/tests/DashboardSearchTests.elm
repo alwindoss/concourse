@@ -39,29 +39,10 @@ hasData =
             |> Application.handleCallback
                 (Callback.AllJobsFetched <|
                     Ok
-                        [ { name = "job"
-                          , pipelineName = "pipeline"
-                          , teamName = "team1"
-                          , nextBuild =
-                                Just
-                                    { id = 1
-                                    , name = "1"
-                                    , job = Just (Data.jobId |> Data.withTeamName "team1")
-                                    , status = BuildStatusStarted
-                                    , duration =
-                                        { startedAt = Nothing
-                                        , finishedAt = Nothing
-                                        }
-                                    , reapTime = Nothing
-                                    }
-                          , finishedBuild = Nothing
-                          , transitionBuild = Nothing
-                          , paused = False
-                          , disableManualTrigger = False
-                          , inputs = []
-                          , outputs = []
-                          , groups = []
-                          }
+                        [ Data.job 0 0
+                            |> Data.withPipelineName "pipeline"
+                            |> Data.withTeamName "team1"
+                            |> Data.withNextBuild (Data.jobBuild BuildStatusStarted |> Just)
                         ]
                 )
             |> Tuple.first
