@@ -173,6 +173,8 @@ type Effect
     | SetFavIcon (Maybe BuildStatus)
     | OpenBuildEventStream Int
     | CloseBuildEventStream
+    | OpenListAllJobsEventStream
+    | CloseListAllJobsEventStream
     | CheckIsVisible String
     | Focus String
     | Blur String
@@ -578,6 +580,16 @@ runEffect effect key csrfToken =
 
         CloseBuildEventStream ->
             closeEventStream "BuildEvents"
+
+        OpenListAllJobsEventStream ->
+            openEventStream
+                { id = "ListAllJobs"
+                , url = Endpoints.JobsList |> Endpoints.toString []
+                , eventTypes = [ "initial", "patch" ]
+                }
+
+        CloseListAllJobsEventStream ->
+            closeEventStream "ListAllJobs"
 
         CheckIsVisible id ->
             checkIsVisible id

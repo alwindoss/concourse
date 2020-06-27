@@ -212,7 +212,17 @@ app.ports.scrollToId.subscribe(function(params) {
 
 const eventStreams = {};
 
+function closeEventStream(id) {
+  const es = eventStreams[id];
+  if (es == null) {
+    return;
+  }
+  es.close();
+  delete eventStreams[id];
+}
+
 app.ports.openEventStream.subscribe(function(config) {
+  closeEventStream(config.id);
   var buffer = [];
   var es = new EventSource(config.url);
   eventStreams[config.id] = es;
@@ -237,12 +247,7 @@ app.ports.openEventStream.subscribe(function(config) {
 });
 
 app.ports.closeEventStream.subscribe(function(id) {
-  const es = eventStreams[id];
-  if (es == null) {
-    return;
-  }
-  es.close();
-  delete eventStreams[id];
+  closeEventStream(id);
 });
 
 app.ports.checkIsVisible.subscribe(function(id) {
