@@ -3,7 +3,10 @@ package runtime
 import (
 	"context"
 	"fmt"
+	"io/ioutil"
 	"path/filepath"
+	"regexp"
+	"strings"
 
 	"github.com/concourse/concourse/worker/runtime/iptables"
 	"github.com/containerd/containerd"
@@ -207,7 +210,7 @@ func NewCNINetwork(opts ...CNINetworkOpt) (*cniNetwork, error) {
 		n.ipt, err = iptables.New()
 
 		if err != nil {
-			return nil, fmt.Errorf("failed to initialized iptables")
+			return nil, fmt.Errorf("failed to initialize iptables")
 		}
 	}
 
@@ -273,10 +276,54 @@ func (n cniNetwork) SetupRestrictedNetworks() error {
 	return nil
 }
 
+type nameservers []string
+type otherEntries []string
+
+func (n cniNetwork) parseHostResolveConf() (nameservers, otherEntries, error) {
+	resolvConf, err := ioutil.ReadFile("/etc/resolv.conf")
+	if err != nil {
+		return nil, nil, fmt.Errorf("unable to read host's resolv.conf: %w", err)
+	}
+
+	resolvContents := string(resolvConf)
+
+	var ns nameservers
+	var entries otherEntries
+
+	for _, resolvEntry := range strings.Split(strings.TrimSpace(resolvContents), "\n") {
+		if resolvEntry == "" {
+			continue
+		}
+
+		if !strings.HasPrefix(resolvEntry, "nameserver") {
+			ns = append(ns, resolvEntry)
+			continue
+		}
+
+		pattern := regexp.MustCompile(`127\.\d{1,3}\.\d{1,3}\.\d{1,3}`)
+		if !pattern.MatchString(resolvEntry) {
+			entries = append(entries, resolvEntry)
+		}
+	}
+
+	return ns, entries, nil
+}
+
 func (n cniNetwork) generateResolvConfContents() []byte {
 	contents := ""
-	for _, n := range n.nameServers {
+	resolvConfNameservers, otherEntries, err := n.parseHostResolveConf()
+
+	// if resolve.conf is empty or unble to read the file, then use the default
+	if err != nil || len(resolvConfNameservers) == 0 {
+		resolvConfNameservers = n.nameServers
+	}
+
+	for _, n := range resolvConfNameservers {
 		contents = contents + "nameserver " + n + "\n"
+	}
+
+	for _, e := range otherEntries {
+		contents = contents + e + "\n"
 	}
 
 	return []byte(contents)
