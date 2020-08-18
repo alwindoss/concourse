@@ -44,17 +44,23 @@ func DetermineInputs(
 		return nil, nil, nil, nil, err
 	}
 
+	fmt.Println(localInputMappings)
+
 	if len(localInputMappings) == 0 && inputsFrom.PipelineName == "" && inputsFrom.JobName == "" {
 		wd, err := os.Getwd()
 		if err != nil {
 			return nil, nil, nil, nil, err
 		}
 
+		// look at the supplied task config, and determine what inputs it wants
+		// loop over taskInputs and make sure cwd is one of the inputs
+
 		localInputMappings = append(localInputMappings, flaghelpers.InputPairFlag{
 			Name: filepath.Base(wd),
 			Path: ".",
 		})
 	}
+	fmt.Println(localInputMappings)
 
 	inputsFromLocal, err := GenerateLocalInputs(fact, team, localInputMappings, includeIgnored, platform)
 	if err != nil {

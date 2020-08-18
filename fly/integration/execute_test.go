@@ -619,6 +619,78 @@ run: {}
 		})
 	})
 
+	Context("when the task specifies no input", func() {
+		BeforeEach(func() {
+			err := ioutil.WriteFile(
+				filepath.Join(buildDir, "task.yml"),
+				[]byte(`---
+platform: some-platform
+
+image_resource:
+  type: registry-image
+  source:
+    repository: ubuntu
+
+inputs:
+
+run:
+  path: ls
+  args: [.]
+`),
+				0644,
+			)
+			Expect(err).NotTo(HaveOccurred())
+
+			planFactory := atc.NewPlanFactory(0)
+
+			taskPlan = planFactory.NewPlan(atc.TaskPlan{
+				Name: "one-off",
+				Config: &atc.TaskConfig{
+					Platform: "some-platform",
+					ImageResource: &atc.ImageResource{
+						Type: "registry-image",
+						Source: atc.Source{
+							"repository": "ubuntu",
+						},
+					},
+					Inputs: nil,
+					Params: nil,
+					Run: atc.TaskRunConfig{
+						Path: "ls",
+						Args: []string{"."},
+					},
+				},
+			})
+
+			expectedPlan = planFactory.NewPlan(atc.DoPlan{
+				planFactory.NewPlan(atc.AggregatePlan{}),
+				taskPlan,
+			})
+
+		})
+
+		FIt("shouldn't upload the current directory", func() {
+			atcServer.RouteToHandler("POST", "/api/v1/teams/main/artifacts",
+				ghttp.CombineHandlers(
+					func(w http.ResponseWriter, req *http.Request) {
+						Fail("artifact was uploaded")
+					},
+				),
+			)
+
+			flyCmd := exec.Command(flyPath, "-t", targetName, "e", "-c", taskConfigPath)
+			flyCmd.Dir = buildDir
+
+			sess, err := gexec.Start(flyCmd, GinkgoWriter, GinkgoWriter)
+			Expect(err).NotTo(HaveOccurred())
+
+			close(events)
+
+			<-sess.Exited
+			Expect(sess.ExitCode()).To(Equal(0))
+		})
+	})
+
 	Context("when the task specifies an optional input", func() {
 		BeforeEach(func() {
 			err := ioutil.WriteFile(
